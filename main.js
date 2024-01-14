@@ -35,8 +35,8 @@ function getWeatherInfo(query) {
 
 function displayResults(weatherInfo){
     console.log(weatherInfo);
-    document.querySelector(".city").innerHTML = weatherInfo.name;
-    document.querySelector(".temp").innerHTML = `${weatherInfo.main.temp}°c`;
+    document.querySelector(".city").innerHTML = `${weatherInfo.name}, ${weatherInfo.sys.country}`;
+    document.querySelector(".temp").innerHTML = `${Math.round(weatherInfo.main.temp)}<span>°c</span>`;
     document.querySelector(".weather").innerHTML = weatherInfo.weather[0].main;
     document.querySelector(".hi-low").innerHTML = 
         `${Math.round(weatherInfo.main.temp_min)}°c / ${Math.round(weatherInfo.main.temp_max)}°c`;
@@ -51,7 +51,7 @@ function displayResults(weatherInfo){
     };
 
     const date = now.toLocaleDateString("en-US",DATE_FORMAT_OPTIONS);
-    
+
     document.querySelector(".date").innerHTML = `${date}`;
 
 }
